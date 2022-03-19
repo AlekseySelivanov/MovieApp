@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_movie">
+
+    <fragment
+        android:id="@+id/navigation_movie"
+        android:name="com.geekbrains.kotlin_lessons.fragments.MovieFragment"
+        android:label="@string/title_movie"
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/openMovie"
+            app:destination="@id/infoFragment"
+            app:enterAnim="@anim/slide_from_bottom"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/disconnectMovie"
+            app:destination="@id/navigation_disconnect"
+            app:enterAnim="@anim/slide_from_bottom"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.geekbrains.kotlin_lessons.fragments.FavoritesFragment"
+        android:label="@string/title_favorites"
+        tools:layout="@layout/fragment_favorites">
+        <action
+            android:id="@+id/action_navigation_favorites_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/disconnectFavorites"
+            app:destination="@id/navigation_disconnect"
+            app:enterAnim="@anim/slide_from_bottom"
+            app:exitAnim="@anim/fragment_fade_exit" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.geekbrains.kotlin_lessons.fragments.HistoryFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_navigation_history_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/disconnectHistory"
+            app:destination="@id/navigation_disconnect"
+            app:enterAnim="@anim/slide_from_bottom"
+            app:exitAnim="@anim/fragment_fade_exit" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.geekbrains.kotlin_lessons.fragments.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_navigation_search_to_infoFragment"
+            app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/disconnectSearch"
+            app:destination="@id/navigation_disconnect"
+            app:enterAnim="@anim/slide_from_bottom"
+            app:exitAnim="@anim/fragment_fade_exit" />
+
+        <action
+            android:id="@+id/action_navigation_search_to_actorFragment"
+            app:destination="@id/actorFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.geekbrains.kotlin_lessons.fragments.InfoFragment"
+        android:label="InfoFragment"
+        tools:layout="@layout/fragment_info">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/action_navigation_info_to_actorFragment"
+            app:destination="@id/actorFragment" />
+
+        <action
+            android:id="@+id/disconnectInfo"
+            app:destination="@id/navigation_disconnect"
+            app:enterAnim="@anim/slide_from_bottom"
+            app:exitAnim="@anim/fragment_fade_exit" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/actorFragment"
+        android:name="com.geekbrains.kotlin_lessons.fragments.ActorFragment"
+        android:label="ActorFragment"
+        tools:layout="@layout/fragment_actors">
+        <argument
+            android:name="actorId"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/disconnectActor"
+            app:destination="@id/navigation_disconnect"
+            app:enterAnim="@anim/slide_from_bottom"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_disconnect"
+        android:name="com.geekbrains.kotlin_lessons.fragments.DisconnectFragment"
+        tools:layout="@layout/connection_lost">
+
+    </fragment>
+
+</navigation>
